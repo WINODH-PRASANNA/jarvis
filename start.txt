@@ -1,0 +1,3 @@
+python agent.py dev
+
+https://agents-playground.livekit.io/#cam=1&mic=1&screen=1&video=1&audio=1&chat=1&theme_color=teal
