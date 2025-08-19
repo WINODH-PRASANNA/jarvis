@@ -1,4 +1,5 @@
 from dotenv import load_dotenv
+from prompt import AGENT_INSTRUCTION, AGENT_RESPONSE
 
 from livekit import agents
 from livekit.agents import AgentSession, Agent, RoomInputOptions
@@ -12,7 +13,7 @@ load_dotenv()
 
 class Assistant(Agent):
         def __init__(self) -> None:
-                super().__init__(instructions="You are a helpful voice AI assistant.")
+                super().__init__(instructions=AGENT_INSTRUCTION)
 
 
 async def entrypoint(ctx: agents.JobContext):
@@ -21,7 +22,7 @@ async def entrypoint(ctx: agents.JobContext):
                         model="gemini-2.0-flash-exp",
                         voice="Puck",
                         temperature=0.8,
-                        instructions="You are a helpful assistant",
+                        instructions=AGENT_INSTRUCTION,
                 )
         )
 
@@ -37,7 +38,7 @@ async def entrypoint(ctx: agents.JobContext):
         )
 
         await session.generate_reply(
-                instructions="Greet the user and offer your assistance."
+                instructions=AGENT_RESPONSE
         )
 
 
